@@ -44,6 +44,7 @@ AppAsset::register($this);
             ['label' => 'Mahasiswa', 'url' => ['#'], 'items' =>[
                 ['label' => 'Mahasiswa', 'url' => ['/mahasiswa/index', 'tag' => 'mahasiswa']],
                 ['label' => 'Prodi', 'url' => ['/prodi/index', 'tag' => 'prodi']],
+                ['label' => 'Fakultas', 'url' => ['/fakultas/index', 'tag' => 'fakultas']],
             ]],
 
             ['label' => 'Barang', 'url' => ['#'], 'items' => [

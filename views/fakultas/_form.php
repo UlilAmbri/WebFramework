@@ -4,17 +4,17 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\prodi */
+/* @var $model app\models\Fakultas */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="prodi-form">
+<div class="fakultas-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'prodi')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kode_fakultas')->textInput() ?>
 
-    <?= $form->field($model, 'keterangan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nama_fakultas')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
