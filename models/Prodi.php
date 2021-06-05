@@ -1,20 +1,46 @@
-<?php  
+<?php
+
 namespace app\models;
 
-use yii\db\ActiveRecord;
+use Yii;
 
-class Prodi extends ActiveRecord
+/**
+ * This is the model class for table "prodi".
+ *
+ * @property int $id
+ * @property string $prodi
+ * @property string $keterangan
+ */
+class Prodi extends \yii\db\ActiveRecord
 {
-	public static function tableName()
-	{
-		return 'prodi';
-	}
-	public function rules()
-	{
-		return[
-			[['prodi','keterangan'], 'required'],
-			[['prodi','keterangan'], 'string'], 
-		];
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'prodi';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['prodi', 'keterangan'], 'required'],
+            [['prodi', 'keterangan'], 'string', 'max' => 50],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'prodi' => 'Prodi',
+            'keterangan' => 'Keterangan',
+        ];
+    }
 }
-?>
