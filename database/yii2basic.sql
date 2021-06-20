@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2021 pada 14.53
+-- Waktu pembuatan: 20 Jun 2021 pada 13.54
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -142,8 +142,9 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nim`, `nama`, `jekel`, `tgl`, `id_fakultas`, `id_prodi`, `email`, `alamat`) VALUES
-(22, '1911081009', 'Ulil Ambri', 'L', '2000-10-23', 191108, 1, 'ulilambri9888@gmail.com', 'Jl. Usaha'),
-(24, '1911082009', 'Muhammad Fikrullah Mujahid', 'L', '1999-06-17', 191108, 1, 'fikri@gmail.com', 'Jl. Indah');
+(25, '123', 'ucok Hasibuan', 'L', '2021-06-20', 4, 1, 'HasibuanGanteng@gantenglah.com', 'Dirumah Hasibuan'),
+(26, '1911081009', '222', 'L', '2021-06-30', 2, 8, 'a@a.com', 'w'),
+(27, '121', 'asda', 'L', '2021-06-13', 3, 7, 'asdadad', 'asdasdas');
 
 -- --------------------------------------------------------
 
@@ -153,6 +154,7 @@ INSERT INTO `mahasiswa` (`id`, `nim`, `nama`, `jekel`, `tgl`, `id_fakultas`, `id
 
 CREATE TABLE `prodi` (
   `id` int(11) NOT NULL,
+  `id_fakultas` int(11) NOT NULL,
   `prodi` varchar(50) NOT NULL,
   `keterangan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -161,13 +163,13 @@ CREATE TABLE `prodi` (
 -- Dumping data untuk tabel `prodi`
 --
 
-INSERT INTO `prodi` (`id`, `prodi`, `keterangan`) VALUES
-(1, 'TRPL', 'Jurusan Teknologi Informasi'),
-(2, 'TKOM', 'Jurusan Teknologi Informasi'),
-(3, 'MI', 'Jurusan Teknologi Informasi'),
-(6, 'MM', 'Jurusan Teknologi Informasi'),
-(7, 'Mesin', 'Jurusan Teknik Mesin'),
-(8, 'Elektronika', 'Jurusan Elektronika');
+INSERT INTO `prodi` (`id`, `id_fakultas`, `prodi`, `keterangan`) VALUES
+(1, 4, 'TRPL', 'Jurusan Teknologi Informasi'),
+(2, 4, 'TKOM', 'Jurusan Teknologi Informasi'),
+(3, 4, 'MI', 'Jurusan Teknologi Informasi'),
+(6, 4, 'MM', 'Jurusan Teknologi Informasi'),
+(7, 3, 'Mesin', 'Jurusan Teknik Mesin'),
+(8, 2, 'Elektronika', 'Jurusan Elektronika');
 
 -- --------------------------------------------------------
 
@@ -235,7 +237,8 @@ ALTER TABLE `mahasiswa`
 -- Indeks untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_fakultas` (`id_fakultas`);
 
 --
 -- Indeks untuk tabel `supplier`
@@ -269,7 +272,7 @@ ALTER TABLE `jenis`
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `prodi`
@@ -293,6 +296,12 @@ ALTER TABLE `supplier`
 ALTER TABLE `barang`
   ADD CONSTRAINT `barang_ibfk_1` FOREIGN KEY (`id_jenis`) REFERENCES `jenis` (`id`),
   ADD CONSTRAINT `barang_ibfk_2` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `prodi`
+--
+ALTER TABLE `prodi`
+  ADD CONSTRAINT `prodi_ibfk_1` FOREIGN KEY (`id_fakultas`) REFERENCES `fakultas` (`id_fakultas`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
