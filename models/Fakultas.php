@@ -21,6 +21,11 @@ class Fakultas extends \yii\db\ActiveRecord
         return 'fakultas';
     }
 
+    public static function getFakultas()
+    {
+        return Self::find()->select(['nama_fakultas', 'id_fakultas'])->indexBy('id_fakultas')->column();
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,5 +48,11 @@ class Fakultas extends \yii\db\ActiveRecord
             'kode_fakultas' => 'Kode Fakultas',
             'nama_fakultas' => 'Nama Fakultas',
         ];
+    }
+
+    public function getMahasiswa()
+    {
+        
+        return $this->hasOne(Mahasiswa::className(),['id_fakultas'=>'id_fakultas']);
     }
 }

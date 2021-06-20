@@ -3,7 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use kartik\date\DatePicker;
+use kartik\depdrop\DepDrop;
 use app\models\Prodi;
 use app\models\Fakultas;
 
@@ -34,9 +36,24 @@ use app\models\Fakultas;
     ]
 ]);?>
 
-    <?= $form->field($model, 'id_fakultas')->dropDownList(ArrayHelper::map(Fakultas::find()->all(),'kode_fakultas','nama_fakultas'),['prompt' => 'Pilih'])->label('Fakultas') ?>
+   
+   <?= $form->field($model, 'id_fakultas')->dropDownList(Fakultas::getFakultas(),
+   		['id'=>'fakultas','prompt'=>'Select Jurusan...'])
+   ?>
 
-    <?= $form->field($model, 'id_prodi')->dropDownList(ArrayHelper::map(Prodi::find()->all(),'id','prodi'),['prompt' => 'Pilih'])->label('Prodi') ?>
+
+    <?=  $form->field($model, 'id_prodi')
+	    ->widget(DepDrop::classname(), 
+	    	[
+	    	'data' => Prodi::getProdiList($model->id_fakultas), 
+	    	'options' => ['id' => 'prodi','prompt' => 'Select Prodi.....'],
+	    	'pluginOptions' => [
+	    		'depends' => ['fakultas'],
+	    		'placeholder' => 'Select Prodi.....',
+	    		'url' => Url::to(['mahasiswa/subcat'])
+	    	]
+	    ])
+    ?>
 
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>

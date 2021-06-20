@@ -21,6 +21,19 @@ class Prodi extends \yii\db\ActiveRecord
         return 'prodi';
     }
 
+    public static function getProdiList($fakultasID, $dependent = false)
+    {
+        $subCategory = self::find()
+        ->select(['prodi as name', 'id'])
+        ->where(['id_fakultas' => $fakultasID])
+        ->asArray()
+        ->all();
+
+        return $subCategory;
+    }
+
+
+
     /**
      * {@inheritdoc}
      */

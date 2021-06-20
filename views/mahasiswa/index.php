@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MahasiswaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Mahasiswas';
+$this->title = 'Mahasiswa';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mahasiswa-index">
@@ -31,8 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama',
             'jekel',
             'tgl',
-            'id_fakultas',
-            'id_prodi',
+            //'id_fakultas',
+            'fakultas.nama_fakultas',
+            'prodi.prodi',
+            //'id_prodi',
             'email:email',
             'alamat',
 
