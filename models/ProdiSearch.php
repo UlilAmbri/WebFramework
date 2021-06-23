@@ -17,7 +17,7 @@ class ProdiSearch extends prodi
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+            [['id', 'id_fakultas'], 'integer'],
             [['prodi', 'keterangan'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class ProdiSearch extends prodi
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'id_fakultas' => $this->id_fakultas,
         ]);
 
         $query->andFilterWhere(['like', 'prodi', $this->prodi])

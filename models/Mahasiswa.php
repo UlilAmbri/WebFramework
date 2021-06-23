@@ -27,8 +27,6 @@ class Mahasiswa extends \yii\db\ActiveRecord
         return 'mahasiswa';
     }
 
-
-
     /**
      * {@inheritdoc}
      */
@@ -42,7 +40,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
             [['nama', 'email'], 'string', 'max' => 50],
             [['jekel'], 'string', 'max' => 1],
             [['alamat'], 'string', 'max' => 100],
-            [['id_fakultas'], 'exist', 'skipOnError' => true, 'targetClass' => Fakultas::className(), 'targetAttribute' => ['id_fakultas' => 'id']],
+            [['id_fakultas'], 'exist', 'skipOnError' => true, 'targetClass' => Fakultas::className(), 'targetAttribute' => ['id_fakultas' => 'id_fakultas']],
             [['id_prodi'], 'exist', 'skipOnError' => true, 'targetClass' => Prodi::className(), 'targetAttribute' => ['id_prodi' => 'id']],
         ];
     }
@@ -65,7 +63,7 @@ class Mahasiswa extends \yii\db\ActiveRecord
         ];
     }
 
-     public function getFakultas()
+    public function getFakultas()
     {
        return $this->hasOne(Fakultas::className(), ['id_fakultas' => 'id_fakultas']);
     }
