@@ -68,8 +68,8 @@ class MahasiswaController extends Controller
         $model = new Mahasiswa();
 
         if ($model->load(Yii::$app->request->post())) {
-        	$model->tgl = \Yii::$app->formatter->asDate($model->tgl, "yyyy-MM-dd");
-        	$model->save();
+            $model->tgl = \Yii::$app->formatter->asDate($model->tgl, "yyyy-MM-dd");
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -90,8 +90,8 @@ class MahasiswaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-        	$model->tgl = \Yii::$app->formatter->asDate($model->tgl, "yyyy-MM-dd");
-        	$model->save();
+            $model->tgl = \Yii::$app->formatter->asDate($model->tgl, "yyyy-MM-dd");
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -122,10 +122,11 @@ class MahasiswaController extends Controller
             if ($parents != null) {
                 $prodi = $parents[0];
                 $out = Prodi::getProdiList($prodi);
-                return ['output'=>$out, 'selected'=>'' ];
+
+                return ['output'=>$out,'selected'=>''];
             }
         }
-        return ['output'=>'', 'selected'=>''];
+        return ['output'=>'','selected'=>''];
     }
 
     /**
