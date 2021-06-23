@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tgl') ?>
 
-    <?php  echo $form->field($model, 'id_fakultas') ?>
+    <?php echo $form->field($model, 'id_fakultas') ?>
 
     <?php  echo $form->field($model, 'id_prodi') ?>
 
-    <?php  echo $form->field($model, 'email') ?>
+    <?php echo $form->field($model, 'email') ?>
 
     <?php  echo $form->field($model, 'alamat') ?>
 

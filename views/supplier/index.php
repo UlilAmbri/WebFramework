@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SupplierSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Suppliers';
+$this->title = 'Supplier';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="supplier-index">

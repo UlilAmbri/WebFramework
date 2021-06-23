@@ -26,35 +26,30 @@ use app\models\Fakultas;
 
     <?= $form->field($model, 'jekel')->radioList(array('L'=>'Laki-laki','P'=>'Perempuan'))->label('Jenis Kelamin') ?>
 
-    
-
     <?= $form->field($model, 'tgl')->widget(DatePicker::classname(), [
-    	'options' => ['placeholder' => 'Pilih Tanggal ...'],
-    	'pluginOptions' => [
+        'options' => ['placeholder' => 'Pilih Tanggal ...'],
+        'pluginOptions' => [
         'autoclose'=>true,
-        'format' => 'dd-M-yyyy'
-    ]
-]);?>
+        'format' => 'dd-M-yyyy'  ]
+    ]); ?>
 
-   
-   <?= $form->field($model, 'id_fakultas')->dropDownList(Fakultas::getFakultas(),
-   		['id'=>'fakultas','prompt'=>'Select Jurusan...'])
-   ?>
+    <?= $form->field($model, 'id_fakultas')->dropDownList(Fakultas::getFakultas(),
+        ['id'=>'fakultas','prompt'=>'Select Jurusan...'])
+    ?>
 
 
     <?=  $form->field($model, 'id_prodi')
-	    ->widget(DepDrop::classname(), 
-	    	[
-	    	'data' => Prodi::getProdiList($model->id_fakultas), 
-	    	'options' => ['id' => 'prodi','prompt' => 'Select Prodi.....'],
-	    	'pluginOptions' => [
-	    		'depends' => ['fakultas'],
-	    		'placeholder' => 'Select Prodi.....',
-	    		'url' => Url::to(['mahasiswa/subcat'])
-	    	]
-	    ])
+        ->widget(DepDrop::classname(), 
+            [
+            'data' => Prodi::getProdiList($model->id_fakultas), 
+            'options' => ['id' => 'prodi','prompt' => 'Select Prodi.....'],
+            'pluginOptions' => [
+                'depends' => ['fakultas'],
+                'placeholder' => 'Select Prodi.....',
+                'url' => Url::to(['mahasiswa/subcat'])
+            ]
+        ])
     ?>
-
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
