@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2021 pada 13.54
+-- Waktu pembuatan: 23 Jun 2021 pada 11.30
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -144,7 +144,9 @@ CREATE TABLE `mahasiswa` (
 INSERT INTO `mahasiswa` (`id`, `nim`, `nama`, `jekel`, `tgl`, `id_fakultas`, `id_prodi`, `email`, `alamat`) VALUES
 (25, '123', 'ucok Hasibuan', 'L', '2021-06-20', 4, 1, 'HasibuanGanteng@gantenglah.com', 'Dirumah Hasibuan'),
 (26, '1911081009', '222', 'L', '2021-06-30', 2, 8, 'a@a.com', 'w'),
-(27, '121', 'asda', 'L', '2021-06-13', 3, 7, 'asdadad', 'asdasdas');
+(27, '121', 'asda', 'L', '2021-06-13', 3, 7, 'asdadad', 'asdasdas'),
+(29, '1', 'qwe', 'L', '2021-06-06', 4, 3, 'wq', 'zz'),
+(30, '010921', 'apalah', 'L', '2021-06-11', 2, 10, 'ad12as@sa', 'vc');
 
 -- --------------------------------------------------------
 
@@ -169,7 +171,9 @@ INSERT INTO `prodi` (`id`, `id_fakultas`, `prodi`, `keterangan`) VALUES
 (3, 4, 'MI', 'Jurusan Teknologi Informasi'),
 (6, 4, 'MM', 'Jurusan Teknologi Informasi'),
 (7, 3, 'Mesin', 'Jurusan Teknik Mesin'),
-(8, 2, 'Elektronika', 'Jurusan Elektronika');
+(8, 2, 'Elektronika', 'Jurusan Elektronika'),
+(9, 3, 'Manufaktur', 'Jurusan Teknik Mesin'),
+(10, 2, 'PLN', 'Jurusan Elektronika');
 
 -- --------------------------------------------------------
 
@@ -272,13 +276,13 @@ ALTER TABLE `jenis`
 -- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
