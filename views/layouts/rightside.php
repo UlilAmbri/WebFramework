@@ -1,4 +1,4 @@
-	  <!-- Control Sidebar -->
+ <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
@@ -48,7 +48,6 @@
                 </a>
               </li>
             </ul><!-- /.control-sidebar-menu -->
-
             <h3 class="control-sidebar-heading">Tasks Progress</h3>
             <ul class="control-sidebar-menu">
               <li>
@@ -96,7 +95,6 @@
                 </a>
               </li>
             </ul><!-- /.control-sidebar-menu -->
-
           </div><!-- /.tab-pane -->
           <!-- Stats tab content -->
           <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
@@ -113,7 +111,6 @@
                   Some information about this general settings option
                 </p>
               </div><!-- /.form-group -->
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Allow mail redirect
@@ -123,7 +120,6 @@
                   Other sets of options are available
                 </p>
               </div><!-- /.form-group -->
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Expose author name in posts
@@ -133,23 +129,19 @@
                   Allow the user to show his name in blog posts
                 </p>
               </div><!-- /.form-group -->
-
               <h3 class="control-sidebar-heading">Chat Settings</h3>
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Show me as online
                   <input type="checkbox" class="pull-right" checked>
                 </label>
               </div><!-- /.form-group -->
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Turn off notifications
                   <input type="checkbox" class="pull-right">
                 </label>
               </div><!-- /.form-group -->
-
               <div class="form-group">
                 <label class="control-sidebar-subheading">
                   Delete chat history

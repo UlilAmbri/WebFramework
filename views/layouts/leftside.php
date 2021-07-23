@@ -44,16 +44,16 @@ use yii\helpers\Url;
                             'url' => '#',
                             'items' => [
                                 [
-                                    'label' => 'Master1',
+                                    'label' => 'Mahasiswa',
                                     'icon' => 'fa fa-database',
-                                    'url' => '?r=master1/',
-				    'active' => $this->context->route == 'master1/index'
+                                    'url' => 'mahasiswa/',
+                                    'active' => $this->context->route == 'mahasiswa/index'
                                 ],
                                 [
                                     'label' => 'Master2',
                                     'icon' => 'fa fa-database',
                                     'url' => '?r=master2/',
-				    'active' => $this->context->route == 'master2/index'
+                                    'active' => $this->context->route == 'master2/index'
                                 ]
                             ]
                         ],
