@@ -8,6 +8,10 @@ use kartik\date\DatePicker;
 use kartik\depdrop\DepDrop;
 use app\models\Prodi;
 use app\models\Fakultas;
+use app\models\Provinces;
+use app\models\Regencies;
+use app\models\Districts;
+use app\models\Villages;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Mahasiswa */
@@ -51,13 +55,53 @@ use app\models\Fakultas;
         ])
     ?>
 
+    <?= $form->field($model, 'id_provinsi')->dropDownList(Provinces::getProv(),
+        ['id'=>'provinces','prompt'=>'Select Provinsi...'])
+    ?>
+
+    <?=  $form->field($model, 'id_kab')
+        ->widget(DepDrop::classname(), 
+            [
+            'data' => Regencies::getKab($model->id_provinsi), 
+            'options' => ['id' => 'name','prompt' => 'Select Kab/Kota.....'],
+            'pluginOptions' => [
+                'depends' => ['provinces'],
+                'placeholder' => 'Select Kab/Kota.....',
+                'url' => Url::to(['mahasiswa/kab'])
+            ]
+        ])
+    ?>
+    
+
+
+      <!-- $form->field($model, 'id_kel')
+        ->widget(DepDrop::classname(), 
+            [
+            'data' => Districts::getKelurahan($model->id_kab), 
+            'options' => ['id' => 'name','prompt' => 'Select Kecamatan.....'],
+            'pluginOptions' => [
+                'depends' => ['provinces','regencies'],
+                'placeholder' => 'Select Kecamatan.....',
+                'url' => Url::to(['mahasiswa/kel'])
+            ]
+        ]) -->
+    
+    
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'alamat')->textarea(array('rows'=>4)) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
+        <?= $form->field($model, 'foto')->fileInput() ?>
+
+        <div class="form-group">
+            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <!-- <button>Submit</button> -->
+
+    <?php ActiveForm::end() ?>
 
     <?php ActiveForm::end(); ?>
 

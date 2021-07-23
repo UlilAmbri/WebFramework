@@ -36,8 +36,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'tgl',
             'id_fakultas',
             'id_prodi',
+            'id_provinsi',
+            'id_kab',
             'email:email',
             'alamat',
+            'foto',
+            // [
+            //     'attribute' => 'foto',
+            //     'format' => 'raw',
+            //     'value' => function($data){
+            //         if (!is_null($data->foto)) {
+            //             return Html::img(Yii::$app->homeUrl . 'img/' .$data->foto,
+            //             ['style' => 'width:50px;height:auto;']
+            //         );
+            //         }else{
+            //             return NULL;
+            //         }
+            //     }
+            // ],
         ],
     ]) ?>
 

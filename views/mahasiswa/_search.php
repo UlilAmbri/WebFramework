@@ -29,9 +29,15 @@ use yii\widgets\ActiveForm;
 
     <?php  echo $form->field($model, 'id_prodi') ?>
 
+    <?php  echo $form->field($model, 'id_provinsi') ?>
+
+    <?php  echo $form->field($model, 'id_kab') ?>
+
     <?php echo $form->field($model, 'email') ?>
 
     <?php  echo $form->field($model, 'alamat') ?>
+
+    <?php  echo $form->field($model, 'foto') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
