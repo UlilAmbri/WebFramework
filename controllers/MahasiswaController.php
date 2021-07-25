@@ -6,9 +6,14 @@ use Yii;
 use app\models\Mahasiswa;
 use app\models\MahasiswaSearch;
 use app\models\Prodi;
+use app\models\Provinces;
+use app\models\Regencies;
+use app\models\Districts;
+use app\models\Villages;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\UploadForm;
 
 /**
  * MahasiswaController implements the CRUD actions for Mahasiswa model.
@@ -69,7 +74,8 @@ class MahasiswaController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->tgl = \Yii::$app->formatter->asDate($model->tgl, "yyyy-MM-dd");
-            $model->save();
+
+            $model->save(false);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -89,7 +95,7 @@ class MahasiswaController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->tgl = \Yii::$app->formatter->asDate($model->tgl, "yyyy-MM-dd");
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
@@ -98,6 +104,21 @@ class MahasiswaController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->foto = UploadedFile::getInstance($model, 'foto');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
     }
 
     /**
@@ -128,6 +149,43 @@ class MahasiswaController extends Controller
         }
         return ['output'=>'','selected'=>''];
     }
+    
+    public function actionKab(){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $parents = $_POST['depdrop_parents'];
+            if ($parents != null) {
+                $kab = $parents[0];
+                $out = Regencies::getKab($kab);
+
+                return ['output'=>$out,'selected'=>''];
+            }
+        }
+        return ['output'=>'','selected'=>''];
+    }
+
+    public function actionKel(){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $out = [];
+        if (isset($_POST['depdrop_parents'])) {
+            $ids = $_POST['depdrop_parents'];
+            #$kab = empty($ids[0]) ? null : $ids[0];
+            $kab = $ids[0];
+            $kelurahan = empty($ids[1]) ? null : $ids[1];
+            if ($kab != null) {
+                $data = Districts::getKelurahan($kab);
+
+                // return ['output'=>$out,'selected'=>''];
+                return ['output'=>$data['out'], 'selected'=>$data['selected']];
+            }else{
+
+            }
+            
+        }
+        return ['output'=>'','selected'=>''];
+    }
+
 
     /**
      * Finds the Mahasiswa model based on its primary key value.
